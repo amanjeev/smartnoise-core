@@ -87,6 +87,7 @@ fn main() {
     documentation::build_documentation(&components, out_dir.join("components.rs"));
     protobuf::build_protobuf(&components, proto_dir.join("components.proto"));
 
+
     prost_build::Config::new().compile_protos(
         &[
             proto_dir.join("api.proto"),
@@ -94,7 +95,7 @@ fn main() {
             proto_dir.join("components.proto"),
             proto_dir.join("value.proto")
         ],
-        &[proto_dir]).unwrap();
+        &[proto_dir]).expect(outdir.as_str());
 
 
 //    let crate_dir = env::var("CARGO_MANIFEST_DIR").unwrap();
